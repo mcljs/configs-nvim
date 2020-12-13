@@ -1,4 +1,4 @@
-# Vim for React/Angular development (Linux and MAC Setup)
+# Vim for JavaScript/React/Angular development (Linux and MAC Setup)
 
 ## 1. Install `vim-plug` as a plugin manager
 
