@@ -11,10 +11,16 @@ Plug 'flowtype/vim-flow'
 Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
+"Dev-icons
+Plug 'ryanoasis/vim-devicons'
+Plug 'benatespina/development.svg.icons'
+
+
 
 "Temas
 Plug 'morhetz/gruvbox'
 Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'tomasiser/vim-code-dark'
 
 " Tree
 Plug 'scrooloose/nerdtree'
@@ -31,6 +37,7 @@ Plug 'christoomey/vim-tmux-navigator'
 " autocomplete
 Plug 'sirver/ultisnips'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'mattn/emmet-vim'
 
 " test
 Plug 'tyewang/vimux-jest-test'
@@ -54,13 +61,14 @@ Plug 'tpope/vim-repeat'
 "Plug neoclide
 Plug 'neoclide/coc-python'
 Plug 'neoclide/coc-tsserver'
-Plug 'sourcegraph/javascript-typescript-langserver'
-Plug 'prabirshrestha/typescript-language-server'
+"Plug 'sourcegraph/javascript-typescript-langserver'
+"Plug 'prabirshrestha/typescript-language-server'
 Plug 'theia-ide/typescript-language-server'
 Plug 'leafgarland/typescript-vim'
 
-"Python
-
+"CSS
+Plug 'ap/vim-css-color',{'for':['css','scss']}
+Plug 'hail2u/vim-css3-syntax'
 
 call plug#end()
 

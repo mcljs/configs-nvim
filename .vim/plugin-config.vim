@@ -4,7 +4,7 @@ let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 let g:lightline = {
       \ 'active': {
       \   'left': [['mode', 'paste'], [], ['relativepath', 'modified']],
-      \   'right': [['cocstatus'], ['filetype', 'percent', 'lineinfo'], ['gitbranch']]
+      \  'right': [['cocstatus'], ['filetype', 'percent', 'lineinfo'], ['gitbranch']]
       \ },
       \ 'inactive': {
       \   'left': [['inactive'], ['relativepath']],
@@ -48,12 +48,16 @@ let g:typescript_compiler_binary = 'tsc'
 let g:typescript_compiler_options = ''
 
 
-
-
+" coc
+autocmd FileType python let b:coc_suggest_disable = 1
+autocmd FileType javascript let b:coc_suggest_disable = 1
+autocmd FileType scss setl iskeyword+=@-@
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
 let g:neosnippet#enable_completed_snippet = 1
+
+"vim fugitive
 
 command! -bang -nargs=? -complete=dir GFiles
   \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
@@ -72,7 +76,7 @@ set nobackup
 set nowritebackup
 
 " Better display for messages
-set cmdheight=2
+set cmdheight=1
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -98,6 +102,10 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+autocmd BufEnter *.js :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
+autocmd BufEnter *.jsx :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
+
 
 function! SwitchFlowOrTsLsps(flowIndex)
   silent let stats = CocAction("extensionStats")
@@ -155,9 +163,12 @@ function! SearchPatternInFile(pattern)
     " If the search function didn't find the pattern, it will have
     " returned 0, thus it wasn't found.  Any other number means that an instance
     " has been found.
-    return search_result
+      return search_result
 endfunction
 
+
+"emmet
+let g:user_emmet_leader_key=','
 
 
 

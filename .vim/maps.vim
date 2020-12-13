@@ -48,11 +48,14 @@ nnoremap <silent> <C-e> 10<C-e>
 nnoremap <silent> <C-y> 10<C-y>
 nmap <Leader>s <Plug>(easymotion-s2)
 
+" git
 nnoremap <Leader>G :G<cr>
 nnoremap <Leader>gp :Gpush<cr>
 nnoremap <Leader>gl :Gpull<cr>
 
+" run current file
 nnoremap <Leader>x :!node %<cr>
+
 
 set splitright
 function! OpenTerminal()
