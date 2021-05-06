@@ -1,3 +1,7 @@
+lua << EOF
+  require'lspconfig'.tsserver.setup{}
+EOF
+
 " HTML, JSX
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 " Lightlane
@@ -18,7 +22,7 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head',
       \   'cocstatus': 'coc#status'
       \ },
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'nightowl',
       \ 'subseparator': {
       \   'left': '',
       \   'right': ''
@@ -48,10 +52,36 @@ let g:typescript_compiler_binary = 'tsc'
 let g:typescript_compiler_options = ''
 
 
+"co
+
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+
+let g:compe.source.ultisnips = v:true
+
+
 " coc
-autocmd FileType python let b:coc_suggest_disable = 1
-autocmd FileType javascript let b:coc_suggest_disable = 1
-autocmd FileType scss setl iskeyword+=@-@
+"autocmd FileType python let b:coc_suggest_disable = 1
+"autocmd FileType javascript let b:coc_suggest_disable = 1
+"autocmd FileType scss setl iskeyword+=@-@
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -101,25 +131,25 @@ nmap <silent> gr <Plug>(coc-references)
 
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
-autocmd BufEnter *.js :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
-autocmd BufEnter *.jsx :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
+"autocmd BufEnter *.js :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
+"autocmd BufEnter *.jsx :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
 
 
-function! SwitchFlowOrTsLsps(flowIndex)
-  silent let stats = CocAction("extensionStats")
-  silent let tsserver = get(filter(copy(stats), function('FindTsServer')), 0)
-  if(a:flowIndex == 0)
-    if(tsserver.state == 'disabled')
-      call CocActionAsync("toggleExtension", "coc-tsserver")
-    endif
-  else
-    if(tsserver.state == 'activated')
-      call CocActionAsync("toggleExtension", "coc-tsserver")
-    endif
-  endif
-endfunction
+"function! SwitchFlowOrTsLsps(flowIndex)
+"  silent let stats = CocAction("extensionStats")
+"  silent let tsserver = get(filter(copy(stats), function('FindTsServer')), 0)
+"  if(a:flowIndex == 0)
+"    if(tsserver.state == 'disabled')
+"      call CocActionAsync("toggleExtension", "coc-tsserver")
+"    endif
+"  else
+"    if(tsserver.state == 'activated')
+"      call CocActionAsync("toggleExtension", "coc-tsserver")
+"    endif
+"  endif
+"endfunction
 
 function! FindTsServer(idx, value) 
   return a:value.id == 'coc-tsserver'
@@ -171,8 +201,92 @@ endfunction
 let g:user_emmet_leader_key=','
 
 
+" vim-devicons
+"let g:webdevicons_conceal_nerdtree_brackets = 1
+"let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+
+" dir-icons
+"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+"let g:DevIconsEnableFoldersOpenClose = 1
+"let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+"let g:DevIconsDefaultFolderOpenSymbol = ''
+
+
+" file-icons
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ts'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['css'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ''
+
+
+  
+  let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {} " needed
+  let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*component.*\.ts$'] = ''
 
 
 
+
+
+"devicons
+"let g:NERDTreeFileExtensionHighlightFullName = 1
+"let g:NERDTreeExactMatchHighlightFullName = 1
+"let g:NERDTreePatternMatchHighlightFullName = 1
+
+"let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+"let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+
+" you can add these colors to your .vimrc to help customizing
+let s:brown = "905532"
+let s:aqua =  "3AFFDB"
+let s:blue = "689FB6"
+let s:darkBlue = "44788E"
+let s:purple = "834F79"
+let s:lightPurple = "834F79"
+let s:red = "AE403F"
+let s:beige = "F5C06F"
+let s:yellow = "FDC500"
+let s:orange = "D4843E"
+let s:darkOrange = "F16529"
+let s:pink = "CB6F6F"
+let s:salmon = "EE6E73"
+let s:green = "8FAA54"
+let s:lightGreen = "31B53E"
+let s:white = "FFFFFF"
+let s:rspec_red = 'FE405F'
+let s:git_orange = 'F54D27'
+
+"let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
+"let g:NERDTreeExtensionHighlightColor['.*component.*\.ts$'] = s:pink
+"let g:NERDTreeExtensionHighlightColor['ts'] = s:darkBlue
+"let g:NERDTreeExtensionHighlightColor['js'] = s:yellow 
+"let g:NERDTreeExtensionHighlightColor['tsx'] = s:blue 
+
+
+
+
+
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
+
+"let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
+
+"let g:WebDevIconsDefaultFolderSymbolColor = s:pink " sets the color for folders that did not match any rule
+"let g:WebDevIconsDefaultFileSymbolColor = s:purple " sets the color for files that did not match any rule
+
+
+"let g:NERDTreeLimitedSyntax = 1
+
+"let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+"let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
+"let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
+"let g:NERDTreeSyntaxEnabledExtensions = ['c', 'h', 'c++', 'cpp', 'php', 'rb', 'js', 'css', 'html','ts','vim','jsx','.*component.*\.ts$'] " enabled extensions with default colors
+"let g:NERDTreeSyntaxEnabledExactMatches = ['node_modules', 'favicon.ico'] " enabled exact matches with default colors
+
+"let g:NERDTreeHighlightCursorline = 0
 
 
