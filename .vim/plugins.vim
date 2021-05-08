@@ -21,7 +21,6 @@ Plug 'benatespina/development.svg.icons'
 Plug 'morhetz/gruvbox'
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'tomasiser/vim-code-dark'
-Plug 'haishanh/night-owl.vim'
 
 " Tree
 Plug 'scrooloose/nerdtree'
@@ -37,7 +36,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " autocomplete
 Plug 'sirver/ultisnips'
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'mattn/emmet-vim'
 
 " test
@@ -59,11 +58,11 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'tpope/vim-repeat'
 
-"  Plug neoclide
-"Plug 'neoclide/coc-python'
-"Plug 'neoclide/coc-tsserver'
-Plug 'sourcegraph/javascript-typescript-langserver'
-Plug 'prabirshrestha/typescript-language-server'
+"Plug neoclide
+Plug 'neoclide/coc-python'
+Plug 'neoclide/coc-tsserver'
+"Plug 'sourcegraph/javascript-typescript-langserver'
+"Plug 'prabirshrestha/typescript-language-server'
 Plug 'theia-ide/typescript-language-server'
 Plug 'leafgarland/typescript-vim'
 
@@ -71,30 +70,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'ap/vim-css-color',{'for':['css','scss']}
 Plug 'hail2u/vim-css3-syntax'
 
-
-"Devicons
-"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-" Identandor de codigo
-Plug 'prettier/vim-prettier', {
-\ 'do': 'yarn install',
-\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-
-" Telescope
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-
-" Autocomplete
-Plug 'hrsh7th/nvim-compe'
-Plug 'neovim/nvim-lspconfig'
-
-
 call plug#end()
-
-lua << EOF
-  require'lspconfig'.tsserver.setup{}
-EOF
 
 

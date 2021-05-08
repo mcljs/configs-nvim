@@ -11,13 +11,10 @@ set showmatch
 set sw=2
 set relativenumber
 set syntax=html
-set completeopt=menuone,noselect
-
 
 "theme codedark
 set t_Co=256
 set t_ut=
-
 
 
 so ~/.vim/plugins.vim
@@ -67,7 +64,6 @@ set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
-
 
 
 
